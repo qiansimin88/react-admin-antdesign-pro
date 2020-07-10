@@ -1,0 +1,193 @@
+@import '~antd/es/style/themes/default.less';
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+.colorWeak {
+  filter: invert(80%);
+}
+
+.ant-layout {
+  min-height: 100vh;
+}
+
+canvas {
+  display: block;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+@media (max-width: @screen-xs) {
+  .ant-table {
+    width: 100%;
+    overflow-x: auto;
+    &-thead > tr,
+    &-tbody > tr {
+      > th,
+      > td {
+        white-space: pre;
+        > span {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+// 兼容IE11
+@media screen and(-ms-high-contrast: active), (-ms-high-contrast: none) {
+  body .ant-design-pro > .ant-layout {
+    min-height: 100vh;
+  }
+}
+
+.ant-pro-global-footer {
+  // position: fixed;
+  // bottom: 10px;
+  // text-align: center;
+  // width: 100%;
+}
+.global-page-module {
+  background: #fff;
+  margin-bottom: 20px;
+  padding: 20px;
+  
+  
+  .global-page-title {
+    font-weight: 600;
+    font-size: 16px;
+    
+  }
+}
+
+
+.global-detail-page {
+  width: 100%;
+  background-color: #fff;
+  padding: 20px;
+  .global-detail-page-title {
+    font-weight: 500;
+    font-size: 20px;
+    color: #333;
+  }
+}
+
+:global {
+  .ant-table-fixed {
+    table-layout: fixed;
+  }
+
+  .ant-table-tbody > tr > td {
+    word-wrap: break-word;
+    word-break: break-all;
+  }
+  .ant-page-header-heading {
+    display: none;
+  }
+  body {
+    .ant-table-middle > .ant-table-content > .ant-table-scroll > .ant-table-body > table > .ant-table-thead > tr > th, 
+    .ant-table-middle > .ant-table-content > .ant-table-fixed-left > .ant-table-header > table > .ant-table-thead > tr > th,
+    .ant-table-middle > .ant-table-content > .ant-table-fixed-right > .ant-table-header > table > .ant-table-thead > tr > th, 
+    .ant-table-middle > .ant-table-content > .ant-table-fixed-left > .ant-table-body-outer > .ant-table-body-inner > table > .ant-table-thead > tr > th, 
+    .ant-table-middle > .ant-table-content > .ant-table-fixed-right > .ant-table-body-outer > .ant-table-body-inner > table > .ant-table-thead > tr > th, 
+    .ant-table-middle > .ant-table-content > .ant-table-header > table > .ant-table-thead > tr > th, 
+    .ant-table-middle > .ant-table-content > .ant-table-body > table > .ant-table-thead > tr > th,
+    .ant-table-wrapper table > .ant-table-tbody > tr > th,
+    .ant-table-wrapper .ant-table-thead > tr > th {
+      font-size: 13px;
+      padding: 4px 2px;
+      // text-align: center;
+    }
+    
+    .ant-table-middle > .ant-table-content > .ant-table-header > table > .ant-table-tbody > tr > td, 
+    .ant-table-middle > .ant-table-content > .ant-table-body > table > .ant-table-tbody > tr > td, 
+    .ant-table-middle > .ant-table-content > .ant-table-scroll > .ant-table-header > table > .ant-table-tbody > tr > td, 
+    .ant-table-middle > .ant-table-content > .ant-table-scroll > .ant-table-body > table > .ant-table-tbody > tr > td, 
+    .ant-table-middle > .ant-table-content > .ant-table-fixed-left > .ant-table-header > table > .ant-table-tbody > tr > td, 
+    .ant-table-middle > .ant-table-content > .ant-table-fixed-right > .ant-table-header > table > .ant-table-tbody > tr > td, 
+    .ant-table-middle > .ant-table-content > .ant-table-fixed-left > .ant-table-body-outer > .ant-table-body-inner > table > .ant-table-tbody > tr > td, 
+    .ant-table-middle > .ant-table-content > .ant-table-fixed-right > .ant-table-body-outer > .ant-table-body-inner > table > .ant-table-tbody > tr > td,
+    
+    .ant-table-wrapper table > .ant-table-tbody > tr > td {
+      padding: 4px 2px;
+      line-height: 16px;
+      font-size: 13px;
+      .ant-form-item-control {
+        line-height: 20px;
+      }
+      // text-align: center;
+      
+      .ant-btn-link {
+        height: auto;
+        font-size:  13px;
+        line-height: 16px;
+        padding-left: 0;
+      }
+    }
+
+    .ant-pro-page-header-wrap-page-header-warp {
+      // display: none;
+    }
+
+    // .ant-layout-header {
+    //   display: none;
+    // }
+
+
+
+    .ant-btn-sm, .ant-input-sm{
+      font-size: 13px;
+    }
+    .ant-pro-sider-menu-sider, .ant-layout-sider ant-layout-sider-dark {
+      flex: 0 0 200px !important;
+      max-width: 200px !important;
+      min-width: 200px !important;
+      width: 200px !important;
+
+    }
+    .ant-select-sm .ant-select-selection__rendered {
+      font-size: 13px;
+    }
+
+
+
+    .antd-pro-components-global-header-index-right .antd-pro-components-global-header-index-account .antd-pro-components-global-header-index-avatar {
+      margin: calc((32px - 24px) / 2) 0;
+    }
+    .antd-pro-components-global-header-index-right {
+      height: 32px;
+    }
+    .ant-pro-global-header-trigger {
+      height: 32px;
+      display: none;
+    }
+    .ant-pro-global-header {
+      height: 32px;
+      line-height: 32px;
+    }
+    .ant-table-body {
+      padding-bottom: 15px;
+    }
+    
+    
+
+  }
+
+
+  // 移除Safari浏览器里的输入框自带小图标（用户，密码这种）
+  input:focus::-webkit-contacts-auto-fill-button{
+    opacity: 0;
+  }
+}
