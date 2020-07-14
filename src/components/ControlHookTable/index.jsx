@@ -54,6 +54,7 @@ const ControlHookTable = (props) => {
             tab: {
                 onChange() { console.log('change') },
                 defaultActiveKey: null,
+                requestKey: 'dd',
                 TabPane: [
                     {
                         tab: '全部',
@@ -87,12 +88,19 @@ const ControlHookTable = (props) => {
     const [listState, setListate] = useState({}) // 储存当前页面的所有 state
     const [rangeTimeFormat, setRangeTimeFormat] = useState(1)  // 存储 Key
     const [firstInit, setFirstInit] = useState(false)
+    const [tab, setTab] = useState(null) // tab 切换
 
     const CN = classnames(
         {
             [styles.modalBox]: !!modal
         }
     )
+    
+    useEffect(() => {
+        if (tableInfo.tab) {
+            setTab(tableInfo.tab.defaultActiveKey)
+        }
+    }, [])
 
     // 最终请求
     const getList = useCallback(() => {
@@ -105,6 +113,11 @@ const ControlHookTable = (props) => {
 
         if (tableInfo.extraParams && Object.keys(tableInfo.extraParams).length) {
             param = { ...param, ...tableInfo.extraParams }
+        }
+
+        if (tableInfo.tab) {
+            const { requestKey } = tableInfo.tab
+            param = { ...param, ...{ [requestKey]: tab } }
         }
 
         tableInfo.Api(param).then(res => {
@@ -127,7 +140,7 @@ const ControlHookTable = (props) => {
                 // message.error(msg)
             }
         })
-    }, [tableInfo, page, pageSize, listState])
+    }, [tableInfo, page, pageSize, listState, tab])
 
     useEffect(() => {
         setTimeout(() => setLoaidng(false), 1000)
@@ -221,7 +234,7 @@ const ControlHookTable = (props) => {
 
     useEffectUpdate(() => {
         getList()
-    }, [page, listState, pageSize, tableInfo.extraParams])
+    }, [page, listState, pageSize, tableInfo.extraParams, tab])
 
     // useEffect(() => {
     //     if(!firstInit) {
@@ -367,12 +380,18 @@ const ControlHookTable = (props) => {
         return jsx
     }, [extraBtnList])
 
+    const tabChangeHandler = useCallback((v) => {
+        const { onChange } = tableInfo.tab
+        setTab(v)
+        onChange(v)
+    }, [tableInfo.tab])
+
     // tab切换
     const TabAreaJsx = useCallback(() => {
         const { tab } = tableInfo
         let jsxItem = null
         if (tab) {
-            jsxItem = <Tabs type="card" onChange={tab.onChange} defaultActiveKey={tab.defaultActiveKey}>
+            jsxItem = <Tabs type="card" onChange={tabChangeHandler} defaultActiveKey={tab.defaultActiveKey}>
                 {
                     tab.TabPane && tab.TabPane.map(_ => {
                         return (
@@ -385,7 +404,7 @@ const ControlHookTable = (props) => {
             jsxItem = null
         }
         return jsxItem
-    }, [tableInfo])
+    }, [tableInfo, tabChangeHandler])
 
     useImperativeHandle(cRef, () => ({
         getList,
