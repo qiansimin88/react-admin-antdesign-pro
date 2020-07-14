@@ -114,7 +114,7 @@ const ControlHookTable = (props) => {
                 status,
                 entry
             } = res
-            if (status) {
+            if (status && res.entry) {
                 // tableInfo.rowIdKey
                 const uniqItem = {}
                 const keyItem = tableInfo.rowIdKey
@@ -124,7 +124,7 @@ const ControlHookTable = (props) => {
             } else {
                 setDataSource(0)
                 setDataSource([])
-                message.error(msg)
+                // message.error(msg)
             }
         })
     }, [tableInfo, page, pageSize, listState])
