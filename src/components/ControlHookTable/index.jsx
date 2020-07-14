@@ -88,19 +88,13 @@ const ControlHookTable = (props) => {
     const [listState, setListate] = useState({}) // 储存当前页面的所有 state
     const [rangeTimeFormat, setRangeTimeFormat] = useState(1)  // 存储 Key
     const [firstInit, setFirstInit] = useState(false)
-    const [tab, setTab] = useState(null) // tab 切换
+    const [tab, setTab] = useState(tableInfo.tab.defaultActiveKey) // tab 切换
 
     const CN = classnames(
         {
             [styles.modalBox]: !!modal
         }
     )
-    
-    useEffect(() => {
-        if (tableInfo.tab) {
-            setTab(tableInfo.tab.defaultActiveKey)
-        }
-    }, [])
 
     // 最终请求
     const getList = useCallback(() => {
