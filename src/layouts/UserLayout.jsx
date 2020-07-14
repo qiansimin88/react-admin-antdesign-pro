@@ -43,7 +43,7 @@ const UserLayout = props => {
           <div className={styles.top}>
             <div className={styles.header}>
               <Link to="/">
-                <span className={styles.title}>采购系统</span>
+                <span className={styles.title}>demo系统</span>
               </Link>
             </div>
             <div className={styles.desc} />

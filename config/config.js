@@ -89,6 +89,42 @@ export default {
       ],
     },
     {
+      path: '/user',
+      component: '../layouts/UserLayout',
+      routes: [
+        {
+          name: 'login',
+          path: '/user/login',
+          component: './user/login',
+        },
+      ],
+    },
+    {
+      path: '/',
+      component: '../layouts/SecurityLayout',
+      routes: [
+        {
+          path: '/',
+          component: '../layouts/BasicLayout',
+          // authority: ['user'],
+          routes: [
+            {
+              path: '/',
+              redirect: '/homepage',
+            },
+            {
+              path: '/homepage',
+              name: '首页',
+              hideInMenu: true,
+              component: './homepage',
+              hideInBreadcrumb: true,
+              exact: false,
+            },
+          ]
+        }
+      ]
+    },   
+    {
       component: './404',
     },
   ],

@@ -106,7 +106,7 @@ const BasicLayout = props => {
     <ProLayout
       logo={logo}
       menuHeaderRender={(logoDom, titleDom) => (
-        <Link to="/">{titleDom ? <h1>采购系统</h1> : <h1>采购系统</h1>}</Link>
+        <Link to="/">{titleDom ? <h1>demo系统</h1> : <h1>demo系统</h1>}</Link>
       )}
       onCollapse={handleMenuCollapse}
       menuItemRender={(menuItemProps, defaultDom) => {
