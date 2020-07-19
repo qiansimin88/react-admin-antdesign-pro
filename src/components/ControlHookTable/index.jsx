@@ -192,8 +192,8 @@ const ControlHookTable = (props) => {
                     if (type === 'dateRange') {
                         const [key1, key2] = key.split("|")
                         if(values[key]) {
-                            values[key1] = FormatTime(values[key][0])
-                            values[key2] = FormatTime(values[key][1])
+                            values[key1] = FormatTime(values[key][0]) === '-' ? null : FormatTime(values[key][0])
+                            values[key2] = FormatTime(values[key][1]) === '-' ? null : FormatTime(values[key][1])
                             delete values[key]
                         }
                     }
@@ -378,6 +378,7 @@ const ControlHookTable = (props) => {
         const { onChange } = tableInfo.tab
         setTab(v)
         onChange(v)
+        setPage(1)
     }, [tableInfo.tab])
 
     // tab切换
