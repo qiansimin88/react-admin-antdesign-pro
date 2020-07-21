@@ -129,7 +129,7 @@ const ControlHookTable = (props) => {
                 setTotalRecordSize(tta)
                 setDataSource(entry.filter(o =>  !uniqItem[ o[keyItem] || o.id] &&  (uniqItem[ o[keyItem] || o.id ] = 1  )))
             } else {
-                setDataSource(0)
+                setTotalRecordSize(0)
                 setDataSource([])
                 // message.error(msg)
             }

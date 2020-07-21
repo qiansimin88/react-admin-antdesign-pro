@@ -249,3 +249,21 @@ export const addMul = (arg1 = 0, arg2 = 0) => {
   }
   return (arg1 + arg2) / m;
 }
+
+function deal(arg) {
+  var t = 0;
+  try {
+      t = arg.toString().split(".")[1].length
+  } catch(e) {}
+  return t;
+}
+
+// 除法
+export const accDiv = (arg1, arg2) => {
+  if(!arg1) return '-'
+  var t1 = deal(arg1);
+  var t2 = deal(arg2);
+  var r1 = Number(arg1.toString().replace(".", ""))
+  var r2 = Number(arg2.toString().replace(".", ""))
+  return(r1 / r2) * Math.pow(10, t2 - t1);
+}
