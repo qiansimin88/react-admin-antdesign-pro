@@ -129,9 +129,9 @@ const ControlHookTable = (props) => {
                 setTotalRecordSize(tta)
                 setDataSource(entry.filter(o =>  !uniqItem[ o[keyItem] || o.id] &&  (uniqItem[ o[keyItem] || o.id ] = 1  )))
             } else {
-                setTotalRecordSize(0)
                 setDataSource([])
-                // message.error(msg)
+                setTotalRecordSize(0)
+                message.error(msg)
             }
         })
     }, [tableInfo, page, pageSize, listState, tab])
@@ -228,7 +228,8 @@ const ControlHookTable = (props) => {
 
     useEffectUpdate(() => {
         getList()
-    }, [page, listState, pageSize, tableInfo.extraParams, tab])
+    }, [page, listState, pageSize, tab])
+    // tableInfo.extraParams,
 
     // useEffect(() => {
     //     if(!firstInit) {
@@ -439,10 +440,16 @@ const ControlHookTable = (props) => {
                             <div>
                                 <ExtraBtnListJsx />
                             </div>
-                            <Form.Item style={{ textAlign: 'right' }}>
-                                <Button htmlType="submit" type="primary" style={{ marginRight: '10px' }}>查询</Button>
-                                <Button onClick={resetForm}>重置</Button>
-                            </Form.Item>
+                            <>
+                                {
+                                    searchInfo.length > 0 && (
+                                        <Form.Item style={{ textAlign: 'right' }}>
+                                            <Button htmlType="submit" type="primary" style={{ marginRight: '10px' }}>查询</Button>
+                                            <Button onClick={resetForm}>重置</Button>
+                                        </Form.Item>
+                                    )
+                                }
+                            </>
                         </div>
                     </Form >
                 </div>
