@@ -4,6 +4,8 @@ import { connect } from 'dva';
 import { router } from 'umi';
 import HeaderDropdown from '../HeaderDropdown';
 import styles from './index.less';
+import { logoutPageUrl } from '@/utils/url'
+
 
 class AvatarDropdown extends React.Component {
   onMenuClick = event => {
@@ -18,7 +20,7 @@ class AvatarDropdown extends React.Component {
       //   });
       // }
       localStorage.clear();
-      location.href = '#/user/login';
+      location.href = logoutPageUrl;
 
       return;
     }
