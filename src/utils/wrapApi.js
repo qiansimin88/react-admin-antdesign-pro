@@ -11,7 +11,7 @@
  *   })
  */
 import request from './request';
-import { href } from './utils';
+import { href } from './url';
 
 let host = window.location.host;
 let isMock = host.indexOf('mock') > -1;

@@ -2,7 +2,7 @@ import wrapApi from '@/utils/wrapApi';
 
 export default wrapApi(
   {
-    getUserInfo: 'usercenter/operate/get',
+    getUserInfo: 'iam/home/userInfo',
     // getUserInfo: 'usercenter/operate/get',
     // getUser
     logout: 'usercenter/operate/logout',

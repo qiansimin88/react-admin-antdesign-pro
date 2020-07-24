@@ -6,7 +6,7 @@ import { extend } from 'umi-request';
 import { notification, message } from 'antd';
 import router from 'umi/router';
 import { stringify } from 'querystring';
-import { href } from './url.js'
+import { href, loginPageUrl } from './url.js'
 const codeMessage = {
   200: '服务器成功返回请求的数据。',
   201: '新建或修改数据成功。',
@@ -70,7 +70,9 @@ const request = async (url, params) => {
   const token = window.localStorage.getItem('purchase_token');
   // console.log(token, '__________________________________________________________________')
   let headers = params.headers || {};
-  params.headers = Object.assign(headers, { token });
+  params.headers = Object.assign(headers, { 
+    'app-code': 'PURCHASE'
+   });
 
   const requestApi = url.startsWith('http') ? requestExtendWithoutPrefix:  requestExtend ;
   // debugger;
@@ -78,13 +80,8 @@ const request = async (url, params) => {
   // console.log()
   
   return await requestApi(url, params).then(res => {
-    if (res && res.responseCode === '1000010001') {
-      router.replace({
-        pathname: '/user/login',
-        search: stringify({
-          redirect: window.location.href,
-        }),
-      });
+    if (res && res.responseCode === '1000040003') {
+        location.href = loginPageUrl
     }
 
     return res;
