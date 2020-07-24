@@ -80,7 +80,7 @@ const request = async (url, params) => {
   // console.log()
   
   return await requestApi(url, params).then(res => {
-    if (res && res.responseCode === '1000040003') {
+    if (res && res.responseCode === '1000010001') {
         location.href = loginPageUrl
     }
 
