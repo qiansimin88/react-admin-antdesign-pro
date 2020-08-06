@@ -457,9 +457,9 @@ const ControlHookTable = (props) => {
                     <div styleName="boxFlex">
                         <TabAreaJsx />
                     </div>
-                    {
-                        dataSource && dataSource.length ? <Table
+                    <Table
                             scroll={{ x: 1000, y: 1000 }}
+                            key={`table-${dataSource && dataSource.length}`}
                             rowSelection={tableInfo.rowSelection}
                             rowKey={(record, index) => tableInfo.rowIdKey ? record[tableInfo.rowIdKey] : record.id}
                             columns={tableInfo.columns || []}
@@ -479,8 +479,7 @@ const ControlHookTable = (props) => {
                                 pageSizeOptions: ['10', '20', '30'],
                                 showTotal: (total) => { return `共${total}条` }
                             }}
-                        /> : '暂无数据'
-                    }
+                    /> 
                 </div>
             </Spin>
         </PageHeaderWrapper>
