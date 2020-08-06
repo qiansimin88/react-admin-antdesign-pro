@@ -457,26 +457,30 @@ const ControlHookTable = (props) => {
                     <div styleName="boxFlex">
                         <TabAreaJsx />
                     </div>
-                    <Table
-                        scroll={{ x: 1000, y: 1000 }}
-                        rowSelection={tableInfo.rowSelection}
-                        rowKey={(record, index) => tableInfo.rowIdKey ? record[tableInfo.rowIdKey] : record.id}
-                        columns={tableInfo.columns || []}
-                        dataSource={dataSource}
-                        size="middle"
-                        pagination={{
-                            size: 'small',
-                            current: page,
-                            pageSize,
-                            total: totalRecordSize,
-                            showSizeChanger: true,
-                            showQuickJumper: true,
-                            onChange: paginationChange,
-                            onShowSizeChange: handleSizeChange,
-                            pageSizeOptions: ['10', '20', '30'],
-                            showTotal: (total) => { return `共${total}条` }
-                        }}
-                    />
+                    {
+                        dataSource && dataSource.length ? <Table
+                            scroll={{ x: 1000, y: 1000 }}
+                            rowSelection={tableInfo.rowSelection}
+                            rowKey={(record, index) => tableInfo.rowIdKey ? record[tableInfo.rowIdKey] : record.id}
+                            columns={tableInfo.columns || []}
+                            dataSource={dataSource}
+                            expandedRowRender={tableInfo.expandedRowRender}
+                            defaultExpandAllRows={tableInfo.defaultExpandAllRows}
+                            size="middle"
+                            pagination={{
+                                size: 'small',
+                                current: page,
+                                pageSize,
+                                total: totalRecordSize,
+                                showSizeChanger: true,
+                                showQuickJumper: true,
+                                onChange: paginationChange,
+                                onShowSizeChange: handleSizeChange,
+                                pageSizeOptions: ['10', '20', '30'],
+                                showTotal: (total) => { return `共${total}条` }
+                            }}
+                        /> : '暂无数据'
+                    }
                 </div>
             </Spin>
         </PageHeaderWrapper>
